@@ -23,7 +23,7 @@ import './SignUp.css'
 
 const paperStyle = {
   padding: 20,
-  height: '100vh',
+  height: '120vh',
   width: 600,
   margin: '20px auto',
 }
@@ -48,9 +48,16 @@ export default function SignUp({ openSignUp, handleCloseSignUp }) {
   const [emailErr, setEmailErr] = useState({})
   const [passwordErr, setPasswordErr] = useState({})
   const [formValid, setFormValid] = useState(true)
+  const [agreement, setAgreement] = useState(false)
+  const [agreementErr, setAgreementErr] = useState({})
+  const [message, setMessage] = useState('')
 
   const handleChange = (e, val) => {
     setValue(val)
+  }
+
+  const handlePrivacyChange = (event) => {
+    setAgreement(event.target.checked)
   }
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -76,21 +83,23 @@ export default function SignUp({ openSignUp, handleCloseSignUp }) {
         .then((response) => response.json())
         .then((data) => {
           console.log('Success:', data)
+          setFname('')
+          setLname('')
+          setEmail('')
+          setPassword('')
+          data.success ? setMessage(data.success) : setMessage(data.error)
         })
         .catch((error) => {
           console.error('Error:', error)
         })
     }
-    setFname('')
-    setLname('')
-    setEmail('')
-    setPassword('')
   }
   const formValidation = () => {
     const firstNameErr = {}
     const lastNameErr = {}
     const emailErr = {}
     const passwordErr = {}
+    const agreementErr = {}
     let isValid = true
 
     if (fname == '') {
@@ -105,12 +114,16 @@ export default function SignUp({ openSignUp, handleCloseSignUp }) {
     } else if (password == '') {
       passwordErr.passwordEmpty = 'Password Is Required'
       isValid = false
+    } else if (agreement == false) {
+      agreementErr.agreementErrEmpty = 'Please Accept The Policy'
+      isValid = false
     }
 
     setFNameErr(firstNameErr)
     setLNameErr(lastNameErr)
     setEmailErr(emailErr)
     setPasswordErr(passwordErr)
+    setAgreementErr(agreementErr)
 
     if (isValid == false) {
       setFormValid(false)
@@ -223,9 +236,18 @@ export default function SignUp({ openSignUp, handleCloseSignUp }) {
               value={password}
             />
             <FormControlLabel
-              control={<Checkbox name="checkedB" color="primary" />}
+              control={
+                <Checkbox
+                  name="checkedB"
+                  color="primary"
+                  onChange={handlePrivacyChange}
+                />
+              }
               label="I agree to privacy policy"
             />
+            <p style={{ color: 'red' }}>
+              {Object.keys(agreementErr).map((key) => [agreementErr[key]])}
+            </p>
             <Button
               sx={{ display: 'block' }}
               type="submit"
@@ -235,6 +257,7 @@ export default function SignUp({ openSignUp, handleCloseSignUp }) {
             >
               Register Your Account
             </Button>
+            <p style={{ color: 'green' }}>{message}</p>
             <Typography>
               {' '}
               <span>Don't have an account?</span>

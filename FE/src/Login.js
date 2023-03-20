@@ -17,7 +17,7 @@ import { useState } from 'react'
 
 const paperStyle = {
   padding: 20,
-  height: '70vh',
+  height: '90vh',
   width: 600,
   margin: '20px auto',
 }
@@ -37,6 +37,7 @@ export default function Login({ open, handleClose }) {
   const [nameErr, setNameErr] = useState({})
   const [passwordErr, setPasswordErr] = useState({})
   const [formValid, setFormValid] = useState(true)
+  const [message, setMessage] = useState('')
   const handleSubmit = (e) => {
     e.preventDefault()
 
@@ -59,13 +60,14 @@ export default function Login({ open, handleClose }) {
         .then((response) => response.json())
         .then((data) => {
           console.log('Success:', data)
+          setName('')
+          setPassword('')
+          data.success ? setMessage(data.success) : setMessage(data.error)
         })
         .catch((error) => {
           console.error('Error:', error)
         })
     }
-    setName('')
-    setPassword('')
   }
 
   const formValidation = () => {
@@ -166,6 +168,7 @@ export default function Login({ open, handleClose }) {
             >
               Login
             </Button>
+            <p style={{ color: 'green' }}>{message}</p>
             <Typography>
               {' '}
               <span>Don't have an account?</span>

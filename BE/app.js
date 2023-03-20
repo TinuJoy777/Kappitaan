@@ -54,7 +54,7 @@ app.post(
     console.log(oldUser)
 
     if (oldUser) {
-      return res.json({ error: 'User Exists' })
+      return res.json({ error: 'User Already Exists' })
     }
     console.log('DB saving')
     await User.create({
@@ -64,7 +64,7 @@ app.post(
       Email: email,
       Password: password,
     })
-    res.json({ success: 'User Entered successfully' })
+    res.json({ success: 'User Registered successfully' })
   },
 )
 
