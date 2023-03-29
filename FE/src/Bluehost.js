@@ -9,7 +9,7 @@ import Divider from '@mui/material/Divider'
 const sections = [
   { title: 'Home', url: '#' },
   { title: 'Work Abroad', url: '#' },
-  { title: 'Hire With Kappitaan', url: '#' },
+  { title: 'Hire With Bluehost', url: '#' },
   { title: 'Jobs', url: '#' },
   { title: 'Blog', url: '#' },
   { title: 'Contact Us', url: '#' },
@@ -18,9 +18,9 @@ const sections = [
 const content = [
   {
     header: 'OUR APPROACH',
-    title: 'Kappitaan is commited to your success',
+    title: 'Bluehost is commited to your success',
     description:
-      'Discover a new way to work abroad. Kappitaan was created as a single platform to help you find work abroad. Working closely with recruiters and immigration specialists, we’ll help you start your new career as a healthcare professional in just 6-9 months.',
+      'Discover a new way to work abroad. Bluehost was created as a single platform to help you find work abroad. Working closely with recruiters and immigration specialists, we’ll help you start your new career as a healthcare professional in just 6-9 months.',
   },
   {
     header: 'HOW IT WORKS',
@@ -28,7 +28,7 @@ const content = [
   },
 ]
 
-const Kappitaan = () => {
+const Bluehost = () => {
   return (
     <>
       <CssBaseline sx={{ overflow: 'auto' }} />
@@ -44,4 +44,4 @@ const Kappitaan = () => {
   )
 }
 
-export default Kappitaan
+export default Bluehost

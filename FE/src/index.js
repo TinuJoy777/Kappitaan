@@ -1,5 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Kappitaan from './Kappitaan'
+import Bluehost from './Bluehost'
 
-ReactDOM.render(<Kappitaan />, document.getElementById('root'))
+ReactDOM.render(<Bluehost />, document.getElementById('root'))

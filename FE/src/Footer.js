@@ -8,7 +8,7 @@ function Copyright() {
   return (
     <Typography align="left">
       {
-        '© 2020 Kappitaan Inc. All rights reserved. By using this website, you accept our '
+        '© 2020 Blue Host Inc. All rights reserved. By using this website, you accept our '
       }
       <Link color="#4174e7" display="block" underline="none" href="/">
         Terms of use and Privacy policy

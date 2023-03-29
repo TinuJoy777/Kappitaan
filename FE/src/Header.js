@@ -46,13 +46,7 @@ export default function Header(props) {
             component="a"
             href="/"
             sx={{ marginLeft: 10 }}
-          >
-            <img
-              src="https://kappitaan.com/wp-content/uploads/2022/09/kappitaan-logo.svg"
-              alt="react logo"
-              style={{ width: '200px', marginTop: 20 }}
-            />
-          </Typography>
+          ></Typography>
           <Divider orientation="vertical" flexItem />
           <Box
             sx={{
